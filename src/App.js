@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-
+import microphone from "./images/mic.png";
 class App extends React.Component {
   constructor() {
     super();
@@ -24,32 +24,36 @@ class App extends React.Component {
     this.setState({ expression: exp });
   };
 
-  squareRoot = () => {
-    const exp = this.state.expression;
-    const sqr = Math.sqrt(exp);
-    // eslint-disable-next-line use-isnan
-    if (sqr !== NaN) {
-      this.setState({ history: exp, expression: sqr.toFixed(2).toString() });
-    } else {
-      alert("Please enter a valid input");
-      this.setState({ history: exp, expression: "" });
-    }
-  };
-
   evaluateExpresion = () => {
     try {
       // eslint-disable-next-line no-eval
       var result = eval(this.state.expression);
-      result = result.toFixed(2);
+      result = result.toString();
+      if (result.length > 17) {
+        result = result.slice(0, 17);
+      }
       this.setState({
         history: this.state.expression,
-        expression: result.toString(),
+        expression: result,
       });
       console.log(this.state.expression, this.state.history);
     } catch (error) {
       alert("Please enter a valid input");
       this.setState({ history: this.state.expression, expression: "" });
     }
+  };
+
+  speechRecognition = () => {
+    var recognition = new (window.SpeechRecognition ||
+      window.webkitSpeechRecognition ||
+      window.mozSpeechRecognition ||
+      window.msSpeechRecognition)();
+    recognition.lang = "en-us";
+    recognition.start();
+    recognition.onresult = function (event) {
+      var input = event.results[0][0].transcript;
+      console.log(input);
+    };
   };
 
   render() {
@@ -191,12 +195,22 @@ class App extends React.Component {
             >
               0
             </button>
-            <button
-              className="operator"
-              id="sqrt"
-              onClick={() => this.squareRoot()}
-            >
-              {"\u221a"}
+            <button className="operator" id="microphone">
+              <img
+                src={microphone}
+                alt="mic"
+                id="mic"
+                onClick={() => this.speechRecognition()}
+              />
+              <span className="tooltip">
+                The operations supported are addition,subtraction,multiplication
+                and division.
+                <br />
+                Format : number + operation + number
+                <br />
+                The recognition is subjected to accent and the results may be
+                incorrect for some users....!!
+              </span>
             </button>
             <button
               className="operator"

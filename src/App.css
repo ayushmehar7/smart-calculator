@@ -124,12 +124,55 @@
   outline: none;
 }
 
-#sqrt {
-  font-size: 20px;
-  background-color: #ffd879;
-}
-
 #decimal {
   font-size: 20px;
   background-color: #01796f;
+}
+.tooltip {
+  width: 200px;
+  font-size: 9px;
+  position: absolute;
+  background-color: #dddddd;
+  color: #636363;
+  padding: 10px;
+  bottom: 45px;
+  left: 210px;
+  border-radius: 5px;
+  display: none;
+}
+.tooltip::before {
+  content: " ";
+  position: absolute;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent #dddddd transparent transparent;
+  left: 0;
+  margin: -15px;
+  bottom: 14.75px;
+}
+@keyframes microphone-animation {
+  0% {
+    transform: scale(0.9);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 148, 255, 0.4);
+  }
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(0, 148, 255, 0);
+  }
+}
+.record {
+  animation: microphone-animation 1.5s infinite;
+}
+
+#mic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+#microphone :hover .tooltip {
+  display: block;
 }
