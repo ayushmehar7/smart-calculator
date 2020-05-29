@@ -1,38 +1,135 @@
 .App {
-  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  width: 1000px;
+  height: 550px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("./images/Business\ Abstraction\ Presentation\ Slides.jpg");
+  background-size: cover;
+  margin: 70px auto;
+}
+#calculator {
+  width: 320px;
+  height: 520px;
+  background-color: #eaedef;
+  margin: 0 auto;
+  top: 15px;
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#result {
+  height: 120px;
+}
+#keyboard {
+  height: 400px;
+}
+#history {
+  text-align: right;
+  height: 20px;
+  margin: 0 20px;
+  padding-top: 20px;
+  font-size: 15px;
+  color: #919191;
+}
+#output {
+  text-align: right;
+  height: 60px;
+  margin: 10px 20px;
+  font-size: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.operator,
+.number,
+.empty {
+  width: 50px;
+  height: 50px;
+  margin: 15px;
+  float: left;
+  border-radius: 50%;
+  border-width: 0;
+  font-weight: bold;
+  font-size: 15px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.number,
+.empty {
+  background-color: #eaedef;
 }
 
-.App-link {
-  color: #61dafb;
+.number,
+.operator {
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.operator:active,
+.number:active {
+  font-size: 13px;
+}
+.operator:focus,
+.number:focus,
+.empty:focus {
+  outline: none;
+}
+
+#division {
+  font-size: 20px;
+  background-color: #20b2aa;
+}
+
+#multiply {
+  font-size: 20px;
+  background-color: #ffa500;
+}
+
+#subtract {
+  font-size: 20px;
+  background-color: #f08080;
+}
+
+#addition {
+  font-size: 20px;
+  background-color: #7d93e0;
+}
+
+#equals {
+  font-size: 20px;
+  background-color: #9477af;
+}
+
+#clear,
+#backspace,
+#percent {
+  background-color: #dcdcdc;
+}
+
+#output-value {
+  font-size: 30px;
+  background-color: #eaedef;
+  border: none;
+  font-weight: bold;
+}
+
+#history-value {
+  font-size: 20px;
+  background-color: #eaedef;
+  border: none;
+  color: #919191;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+#output-value:focus,
+#history-value:focus {
+  outline: none;
+}
+
+#sqrt {
+  font-size: 20px;
+  background-color: #ffd879;
+}
+
+#decimal {
+  font-size: 20px;
+  background-color: #01796f;
 }
